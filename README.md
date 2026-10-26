@@ -18,7 +18,7 @@ Bấm **Use this template** trên GitHub để tạo repo cho dự án mới, r�
 
 ## Trạng thái
 
-Đã có quy trình. Đang dựng tiếp: mẫu tài liệu, rồi plugin.
+Phần quy trình đã xong. Tiếp theo là mẫu tài liệu, sau đó tới plugin.
 
 ## License
 

@@ -1,160 +1,169 @@
 # Các giai đoạn
 
-> **Người đọc:** cả nhóm, nhất là người chủ trì từng giai đoạn. File này ghi việc của từng giai đoạn: ai chủ trì, việc
-> nào chờ việc nào, cổng để sang giai đoạn sau. Vai trò ở [`roles.md`](roles.md); file nằm ở đâu ở
-> [`documents.md`](documents.md).
+> Trang này dành cho cả nhóm, nhất là người chủ trì từng giai đoạn. Mỗi giai đoạn có bảng việc cần làm, ai chủ trì,
+> việc nào phải chờ việc nào, và gate để sang giai đoạn sau. Vai trò xem ở [`roles.md`](roles.md), vị trí các file xem
+> ở [`documents.md`](documents.md).
 
-Cách đọc bảng: cột **Sau** ghi việc phải xong trước. Việc có cùng điều kiện chạy song song. Thời gian là mặc định, nhóm
-chỉnh trong [`team.md`](team.md). Cổng chỉ chặn việc **chốt**: việc của giai đoạn sau được làm nháp sớm.
+Cột **Sau** ghi những việc phải xong trước. Các việc có cùng điều kiện thì làm song song được. Thời gian ghi ở mỗi giai
+đoạn là mặc định, nhóm có thể đổi trong [`team.md`](team.md).
 
 ## GĐ0 Khởi động · 1–2 ngày
 
-Thống nhất cách làm việc; có repo, CI, board chạy được.
+Mục tiêu là cả nhóm thống nhất cách làm việc và có sẵn repo, CI, board để dùng.
 
 | # | Việc | Chủ trì | Sau |
 |---|---|---|---|
-| 1 | Kickoff: mục tiêu, ngày mục tiêu của các milestone, nhịp review hằng tuần | PM | — |
-| 2 | Ai giữ vai nào | PM | 1 |
-| 3 | Rà [`working-agreement.md`](working-agreement.md), sửa chỗ nhóm muốn khác | PM | 1 |
+| 1 | Họp kickoff, thống nhất mục tiêu, ngày dự kiến của từng milestone và lịch review hằng tuần | PM | — |
+| 2 | Phân vai: ai giữ vai nào | PM | 1 |
+| 3 | Đọc [`working-agreement.md`](working-agreement.md), sửa những chỗ nhóm muốn làm khác | PM | 1 |
 | 4 | Chọn công cụ: GitHub hay GitLab, Issues hay Jira, kênh chat | TL | 1 |
-| 5 | Tạo repo từ template, bảo vệ `main`, điền CODEOWNERS | TL | 2, 4 |
-| 6 | Kiểm CI xanh trên repo mới | DevOps | 5 |
+| 5 | Tạo repo từ template, bật bảo vệ `main`, điền CODEOWNERS | TL | 2, 4 |
+| 6 | Kiểm tra CI chạy xanh trên repo mới | DevOps | 5 |
 | 7 | Dựng board trên tracker | PM | 4 |
-| 8 | Lưu tài khoản hạ tầng và khoá dùng chung trong trình quản lý mật khẩu, ít nhất 2 người truy cập được | DevOps | 4 |
-| 9 | Mỗi người cài máy: `setup`, `check` xanh, API key LLM có hạn mức chi tiêu, plugin cho AI agent | Từng người | 5 |
+| 8 | Cất tài khoản hạ tầng và key dùng chung vào password manager, ít nhất 2 người truy cập được | DevOps | 4 |
+| 9 | Mỗi người cài máy: chạy `setup` và `check` xanh, tạo API key LLM riêng có giới hạn chi tiêu, cài plugin cho AI agent | Từng người | 5 |
 
-Việc 1–4 làm trong một buổi kickoff, kết quả ghi vào [`team.md`](team.md).
+Việc 1 đến 4 làm luôn trong buổi kickoff, kết quả ghi vào [`team.md`](team.md).
 
-**Cổng:** `team.md` đã merge; việc 5–8 xong. Việc 9 xong trước GĐ4.
+**Gate:** `team.md` đã merge và việc 5 đến 8 đã xong. Việc 9 chỉ cần xong trước GĐ4.
 
 ## GĐ1 Khám phá · 2–4 ngày
 
-Hiểu đúng bài toán, biết mình chưa biết gì, chọn hướng bằng kết quả thử thật. Phần thử nhanh giới hạn trước 1–2 ngày.
+Mục tiêu là hiểu đúng bài toán, biết rõ mình còn thiếu thông tin gì, rồi chọn hướng làm dựa trên kết quả thử thật. Phần
+thử nhanh nên giới hạn trong 1–2 ngày.
 
 | # | Việc | Chủ trì | Sau |
 |---|---|---|---|
-| 1 | Ghi nguyên văn yêu cầu vào `discovery/request.md`, không sửa về sau | PM | — |
-| 2 | Sổ câu hỏi `discovery/questions.md`: mỗi người nhận 1–2 nhóm câu hỏi, xếp mức *chặn spec*, *trước build*, *có thì tốt*; câu chưa có trả lời mà phải đi tiếp thì ghi giả định kèm "nếu sai thì ảnh hưởng tới đâu" | PM/BA | 1 |
-| 3 | Gặp ít nhất 3 người dùng hoặc người nắm nghiệp vụ; thu 20–50 mẫu thật, ẩn danh trước khi đưa vào repo | PM/BA | 1 |
-| 4 | Kiểm kê dữ liệu: có gì, nguồn, quyền dùng, PII; dự án train thêm: đủ để train không | QA/Eval | 1 |
-| 5 | Liệt kê 3–5 sai lầm nặng nhất của AI; đây sẽ là chỉ số an toàn và kịch bản eval | QA/Eval | 1 |
-| 6 | `brief.md` một trang | PM | 2, 3 |
-| 7 | Thử nhanh trên mẫu thật: prompt thử và ghi chỗ sai, hoặc baseline với dự án train | AI/ML | 3, 5 |
-| 8 | ADR chọn hướng (prompt, RAG, fine-tune hay train), kèm số đo của việc 7 và chi phí ước tính | AI/ML + TL | 7 |
+| 1 | Chép nguyên văn yêu cầu vào `discovery/request.md`. File này giữ nguyên, không sửa | PM | — |
+| 2 | Lập sổ câu hỏi `discovery/questions.md`. Mỗi người nhận 1–2 nhóm câu hỏi và xếp mức: chặn spec, cần trước khi build, hay biết thì tốt. Câu nào chưa có trả lời mà vẫn phải làm tiếp thì ghi thành giả định, kèm hậu quả nếu giả định sai | PM/BA | 1 |
+| 3 | Gặp ít nhất 3 người dùng hoặc người nắm nghiệp vụ, xin 20–50 mẫu thật. Ẩn danh mẫu trước khi đưa vào repo | PM/BA | 1 |
+| 4 | Kiểm kê dữ liệu: đang có gì, lấy từ đâu, có được phép dùng không, có PII không. Dự án train thì xem thêm dữ liệu có đủ để train không | QA/Eval | 1 |
+| 5 | Liệt kê 3–5 lỗi nặng nhất mà AI có thể gây ra. Danh sách này sẽ thành chỉ số an toàn và kịch bản eval | QA/Eval | 1 |
+| 6 | Viết `brief.md`, gói trong một trang | PM | 2, 3 |
+| 7 | Thử nhanh trên mẫu thật: viết prompt thử và ghi lại chỗ sai, hoặc dựng baseline nếu là dự án train | AI/ML | 3, 5 |
+| 8 | Viết ADR chọn hướng (prompt, RAG, fine-tune hay train), kèm kết quả đo ở việc 7 và chi phí ước tính | AI/ML + TL | 7 |
 
-**Cổng (PM chốt):** `brief.md` và ADR chọn hướng đã merge; mọi câu *chặn spec* đã được gửi tới người cần hỏi; quyết
-định làm hay không, theo hướng nào.
+**Gate (PM chốt):** `brief.md` và ADR chọn hướng đã merge, mọi câu hỏi chặn spec đã gửi tới đúng người, và nhóm đã
+quyết làm hay không, đi theo hướng nào.
 
-- PM là đầu mối hỏi người ngoài nhóm, gửi theo mã `Q-NNN` để người được hỏi không nhận câu trùng.
-- Câu trả lời nhận qua chat phải chép vào sổ, ghi nguồn và ngày.
+- Chỉ PM hỏi người ngoài nhóm, và gửi kèm mã `Q-NNN`, để người được hỏi không nhận cùng một câu từ nhiều người.
+- Câu trả lời nhận qua chat phải chép vào sổ câu hỏi, ghi rõ ai trả lời và ngày nào.
 
 ## GĐ2 Thiết kế · 3–5 ngày
 
-Chốt cấu trúc hệ thống, luật nghiệp vụ, luồng giao diện, cách đo, và **hợp đồng chung** để lúc build mỗi người làm một
-feature song song.
+Mục tiêu là chốt kiến trúc, luật nghiệp vụ, luồng giao diện, cách đo, và nhất là shared contract. Có shared contract rồi
+thì lúc build mỗi người mới làm feature của mình song song được.
 
 | # | Việc | Chủ trì | Sau |
 |---|---|---|---|
-| 1 | `domain/`: thuật ngữ, luật nghiệp vụ dạng bảng có mã, mô hình dữ liệu, edge case | BA | Câu trả lời ở sổ câu hỏi |
-| 2 | ADR cho các quyết định lớn: stack, dữ liệu, auth, bảo mật; ADR hạ tầng do DevOps chủ trì | TL | ADR chọn hướng |
-| 3 | `ARCHITECTURE.md`: sơ đồ tổng, luồng chính end-to-end, deploy | TL | 2 |
-| 4 | `architecture/backend.md` | TL | 3 |
-| 5 | `architecture/frontend.md`, `ui-flow.md` cùng wireframe các màn chính, gồm trạng thái chờ, rỗng, lỗi | FE | 1, 3 |
-| 6 | `architecture/ai.md`: graph hoặc pipeline, node, state, tool, prompt, model theo từng vai, guardrail, **số lần gọi LLM nối tiếp và ngân sách độ trễ mỗi lượt** | AI/ML | 1, 3 |
-| 7 | **Hợp đồng chung**: schema DB, API, sự kiện, agent state, hợp đồng tool; FE và AI/ML góp phần của mình | TL | 1, 4, 5, 6 |
-| 8 | Phương pháp eval: chỉ số, cách chấm, loại bộ dữ liệu, cách chia tập; dự án train thêm hướng dẫn gán nhãn | QA/Eval | 1, 6 |
-| 9 | Convention theo stack và cấu hình công cụ ép luật | TL; người giữ mảng nào viết phần mảng đó | 2 |
-| 10 | Staging và pipeline deploy: repo hiện tại deploy được ngay | DevOps | 2 |
+| 1 | Viết `domain/`: thuật ngữ, luật nghiệp vụ dạng bảng có mã, data model, edge case | BA | Câu trả lời trong sổ câu hỏi |
+| 2 | Viết ADR cho các quyết định lớn: stack, dữ liệu, auth, bảo mật. ADR hạ tầng do DevOps chủ trì | TL | ADR chọn hướng |
+| 3 | Viết `ARCHITECTURE.md`: sơ đồ tổng, luồng chính từ đầu tới cuối, cách deploy | TL | 2 |
+| 4 | Viết `architecture/backend.md` | TL | 3 |
+| 5 | Viết `architecture/frontend.md` và `ui-flow.md`, có wireframe các màn chính với đủ trạng thái loading, empty, error | FE | 1, 3 |
+| 6 | Viết `architecture/ai.md`: agent graph hoặc pipeline, node, state, tool, prompt, model cho từng vai, guardrail. Ghi rõ mỗi lượt gọi LLM mấy lần nối tiếp và ngân sách latency | AI/ML | 1, 3 |
+| 7 | Chốt shared contract: DB schema, API, event, agent state, tool contract. FE và AI/ML góp phần của mình | TL | 1, 4, 5, 6 |
+| 8 | Chọn phương pháp eval: chỉ số, cách chấm, loại dataset, cách chia tập. Dự án train thêm hướng dẫn gán nhãn | QA/Eval | 1, 6 |
+| 9 | Viết convention theo stack và cấu hình công cụ để ép luật. Ai giữ mảng nào viết phần của mảng đó | TL | 2 |
+| 10 | Dựng staging và pipeline deploy, để code hiện có deploy được ngay | DevOps | 2 |
 
-**Cổng:** TL duyệt phần kỹ thuật, PM/BA duyệt `domain/` và UX. Mọi quyết định lớn có ADR Accepted; hợp đồng chung đã
-merge; mọi câu *chặn spec* đã có trả lời hoặc thành giả định được duyệt; staging deploy được; mỗi tài liệu có ít nhất
-một người khác người viết đã duyệt.
+**Gate:** TL duyệt phần kỹ thuật, PM/BA duyệt `domain/` và UX. Để qua gate cần: quyết định lớn nào cũng có ADR đã
+Accepted, shared contract đã merge, câu hỏi chặn spec đã có trả lời hoặc đã thành giả định được duyệt, staging deploy
+được, và tài liệu nào cũng có ít nhất một người khác người viết đã duyệt.
 
-- Agent graph thiết kế để mỗi feature thêm node hoặc tool của mình mà không sửa file trung tâm.
-- Che PII ở mọi đường dữ liệu đi vào hệ thống, không chỉ ở nội dung gửi LLM.
-- Giả định có con số thì để số trong config: câu trả lời khác đi chỉ phải sửa config, không phải sửa thiết kế.
-- Hợp đồng chung đã merge mà muốn đổi thì báo cả nhóm; từ GĐ3 phải qua CR.
+- Thiết kế agent graph sao cho mỗi feature thêm node hoặc tool của mình mà không phải sửa file trung tâm. File trung tâm
+  mà ai cũng sửa sẽ thành chỗ conflict liên tục.
+- Che PII ở mọi đường dữ liệu đi vào hệ thống, không chỉ ở nội dung gửi cho LLM.
+- Giả định nào có con số thì đưa số đó vào config. Sau này câu trả lời khác đi thì chỉ sửa config, không phải sửa thiết
+  kế.
+- Shared contract đã merge mà cần đổi thì báo cả nhóm. Từ GĐ3 trở đi, đổi contract phải qua CR.
 
 ## GĐ3 Spec & Plan · 1–2 ngày
 
-Chốt bản này xây gì, thế nào là đạt, xây theo thứ tự nào; đóng băng tập test trước khi build.
+Mục tiêu là chốt bản này làm gì, thế nào là đạt và làm theo thứ tự nào. Test set phải đóng băng trước khi bắt đầu build.
 
 | # | Việc | Chủ trì | Sau |
 |---|---|---|---|
-| 1 | `prd.md` v1.0: user story, tiêu chí nghiệm thu, phạm vi làm và không làm | PM | — |
-| 2 | `SPEC.md` v1.0: module, giao diện giữa module, lệnh, chiến lược test, ranh giới *luôn làm / hỏi trước / không bao giờ*, bảng truy vết từ yêu cầu tới module | TL | 1 |
-| 3 | `eval/plan.md`: chỉ số, ngưỡng, sai số cho phép giữa hai lần chạy, ngân sách chi phí và độ trễ | QA/Eval | 1 |
-| 4 | Tập vàng ban đầu 50–100 dòng, chia dev và test, ghi nguồn gốc; người rà khác người dựng; đóng băng tập test | QA/Eval dựng, BA rà | 3 |
-| 5 | Phản biện độc lập PRD, SPEC, eval plan: một người không viết các file đó, cộng một agent reviewer | FE hoặc AI/ML | 2, 3 |
-| 6 | `tasks/plan.md`, chia theo mục dưới | TL | 5 |
-| 7 | Tạo việc trên tracker: mỗi lát một Epic, mỗi task một Issue, milestone có ngày | PM | 6 |
+| 1 | Viết `prd.md` v1.0: user story, tiêu chí nghiệm thu, những gì làm và không làm | PM | — |
+| 2 | Viết `SPEC.md` v1.0: module, interface giữa các module, lệnh, chiến lược test, ranh giới "luôn làm / hỏi trước / không bao giờ", và bảng truy từ yêu cầu tới module | TL | 1 |
+| 3 | Viết `eval/plan.md`: chỉ số, ngưỡng, sai số cho phép giữa hai lần chạy, ngân sách chi phí và latency | QA/Eval | 1 |
+| 4 | Dựng golden set ban đầu khoảng 50–100 dòng, chia dev set và test set, ghi nguồn gốc từng dòng. Người rà nhãn khác người dựng. Xong thì đóng băng test set | QA/Eval dựng, BA rà | 3 |
+| 5 | Phản biện độc lập PRD, SPEC và eval plan: một người không viết các file đó đọc kỹ, cộng thêm một agent reviewer | FE hoặc AI/ML | 2, 3 |
+| 6 | Viết `tasks/plan.md` theo cách chia ở dưới | TL | 5 |
+| 7 | Tạo việc trên tracker: mỗi vertical slice một Epic, mỗi task một Issue, milestone có ngày | PM | 6 |
 
-**Cách chia plan:**
+**Chia plan thế nào:**
 
-- **Lát dọc** là một luồng người dùng chạy được từ đầu tới cuối. Lát đầu là bộ khung chạy được, deploy lên staging.
-- **Feature** có một người phụ trách, làm trọn BE, FE và AI.
-- **Task** bằng một PR, ghi: việc, file được sửa, mục SPEC phải đạt, phần *không làm*, task phải xong trước.
-- Bộ chạy eval là task đầu tiên, đứng trước mọi task xây phần mà nó đo.
-- Plan có bảng các file nhiều người cùng sửa (migration, file sinh tự động, config, bộ eval) và luật cho từng file.
-- Mỗi bản phát hành một plan; CR mới đưa vào plan của milestone kế tiếp.
+- Vertical slice là một luồng người dùng chạy được từ đầu tới cuối. Slice đầu tiên là walking skeleton, tức bộ khung
+  mỏng nhất chạy được, và phải deploy lên staging.
+- Mỗi feature có một người phụ trách, làm trọn cả backend, frontend và AI.
+- Mỗi task vừa một PR. Task ghi rõ việc cần làm, file được sửa, mục SPEC phải đạt, những gì không làm, và task nào phải
+  xong trước.
+- Task đầu tiên là bộ chạy eval, vì nó phải có trước mọi task xây phần mà nó đo.
+- Plan có một bảng các file nhiều người cùng sửa (migration, file sinh tự động, config, dataset eval) và luật riêng cho
+  từng file.
+- Mỗi bản phát hành có plan riêng. CR mới thì đưa vào plan của milestone kế tiếp.
 
-**Cổng (cả nhóm approve v1.0):** PRD, SPEC, eval plan đã merge; tập test đã đóng băng, ghi ngày; mọi yêu cầu trong
-`request.md` đã vào spec hoặc nằm ở Non-goals kèm lý do; mọi task có tiêu chí và trỏ tới SPEC; mỗi người có việc ở lát
-đầu.
+**Gate (cả nhóm duyệt v1.0):** PRD, SPEC và eval plan đã merge. Test set đã đóng băng và ghi ngày. Yêu cầu nào trong
+`request.md` cũng đã vào spec hoặc nằm trong Non-goals kèm lý do. Task nào cũng có tiêu chí và link tới SPEC. Ai cũng có
+việc trong slice đầu.
 
-## GĐ4 Xây & phát hành · lặp mỗi milestone
+## GĐ4 Xây & phát hành · lặp lại mỗi milestone
 
-Xây theo lát dọc; mỗi milestone (mặc định 1 tuần) kết thúc bằng một bản phát hành đã qua kiểm chứng. Mỗi lần merge,
-staging tự deploy; prod chỉ deploy ở cổng phát hành.
+Làm theo từng vertical slice. Mỗi milestone, mặc định 1 tuần, kết thúc bằng một bản phát hành đã kiểm chứng. Mỗi lần
+merge, staging tự deploy. Prod chỉ deploy khi qua release gate.
 
-**Vòng làm một task** (người phụ trách feature cùng agent):
+**Làm một task** (người phụ trách feature cùng agent):
 
-1. Tự gán task, chuyển sang In progress, kéo `main`.
-2. Agent đọc task, mục SPEC liên quan và convention của mảng; chỉ làm trong phạm vi task; viết test kèm.
-3. Chạy `check`. Task đụng phần AI thì chạy thêm eval tập dev trước và sau.
-4. Mở PR: link task, mục SPEC, mức rủi ro, kết quả eval nếu có. Cho AI review trước.
-5. Một người khác review; mức rủi ro cao thì người giữ mảng duyệt.
-6. Squash merge, staging tự deploy, chuyển task sang Done.
+1. Tự gán task, chuyển sang In progress, kéo `main` mới nhất.
+2. Agent đọc task, mục SPEC liên quan và convention của mảng đó, chỉ sửa trong phạm vi task và viết test kèm.
+3. Chạy `check`. Nếu task đụng tới phần AI thì chạy thêm eval trên dev set, trước và sau khi sửa.
+4. Mở PR, ghi link task, mục SPEC, mức rủi ro và kết quả eval nếu có. Cho AI review trước.
+5. Nhờ một người khác review. PR rủi ro cao thì code owner của mảng đó duyệt.
+6. Squash merge. Staging tự deploy, chuyển task sang Done.
 
 **Cuối milestone:**
 
 | # | Việc | Chủ trì | Sau |
 |---|---|---|---|
-| 1 | Đóng milestone: mọi task đã merge, staging chạy bản mới nhất | TL | — |
-| 2 | Nghiệm thu: thử các luồng theo tiêu chí của PRD; lỗi thì mở Issue Bug | PM | 1 |
-| 3 | Cho ít nhất 3 người dùng thử theo kịch bản, góp ý ghi thành Issue; góp ý chặn tiêu chí nghiệm thu thì sửa trước khi phát hành | PM/BA | 2 |
-| 4 | **Cổng phát hành:** eval tập test và E2E trên staging, gồm độ trễ; đạt ngưỡng ở `eval/plan.md` | QA/Eval | 2 |
-| 5 | Phát hành prod: sao lưu, deploy, smoke test, gắn tag, viết changelog; hỏng thì rollback | DevOps | 4 |
-| 6 | Retro 30 phút: giữ gì, bỏ gì, thử gì; đổi luật thì sửa `team.md` | PM | 5 |
+| 1 | Đóng milestone: mọi task đã merge, staging đang chạy bản mới nhất | TL | — |
+| 2 | Nghiệm thu: thử các luồng theo tiêu chí trong PRD, gặp lỗi thì mở Issue Bug | PM | 1 |
+| 3 | Cho ít nhất 3 người dùng thử theo kịch bản, góp ý ghi thành Issue. Góp ý nào làm hỏng tiêu chí nghiệm thu thì sửa trước khi phát hành | PM/BA | 2 |
+| 4 | Release gate: chạy eval trên test set và E2E trên staging, đo cả latency, phải đạt ngưỡng trong `eval/plan.md` | QA/Eval | 2 |
+| 5 | Phát hành lên prod: backup, deploy, smoke test, gắn tag, viết changelog. Có sự cố thì rollback | DevOps | 4 |
+| 6 | Retro 30 phút: nên giữ gì, bỏ gì, thử gì. Đổi luật thì sửa `team.md` | PM | 5 |
 
-Thử tay và nghiệm thu đứng trước cổng eval: sản phẩm còn lỗi hành vi thì số eval chưa nói lên chất lượng.
+Phải nghiệm thu và thử tay xong mới chạy eval để phát hành. Sản phẩm còn lỗi hành vi thì điểm eval cao cũng chưa nói lên
+được gì.
 
-## GĐ5 Vận hành · song song GĐ4
+## GĐ5 Vận hành · song song với GĐ4
 
-Giữ sản phẩm chạy ổn, phát hiện sự cố sớm, biến lỗi thật thành cải tiến. Bắt đầu từ bản phát hành prod đầu tiên.
+Mục tiêu là giữ sản phẩm chạy ổn, phát hiện sự cố sớm, và biến lỗi thật thành cải tiến. Giai đoạn này bắt đầu từ bản
+phát hành prod đầu tiên.
 
 **Dựng một lần:**
 
 | # | Việc | Chủ trì | Sau |
 |---|---|---|---|
-| 1 | Giám sát và cảnh báo: uptime, lỗi, độ trễ p95, chi phí LLM mỗi ngày, token mỗi hội thoại | DevOps | Bản phát hành đầu |
-| 2 | Trace của AI: phiên bản prompt, model, tool đã gọi; PII đã che; có hạn lưu. Dự án train thêm: theo dõi drift và điều kiện train lại | AI/ML | 1 |
-| 3 | Kênh phản hồi trong app: góp ý kèm ảnh chụp ngữ cảnh đã ẩn danh, đủ để tái hiện lỗi | PM | Bản phát hành đầu |
-| 4 | Runbook: deploy, rollback, khôi phục sao lưu, xoay khoá; ai xử lý khi có sự cố | DevOps | 1 |
+| 1 | Monitoring và alert: uptime, lỗi, latency p95, chi phí LLM mỗi ngày, token mỗi hội thoại | DevOps | Bản phát hành đầu |
+| 2 | Trace cho AI: ghi phiên bản prompt, model, các tool đã gọi; che PII; có thời hạn lưu. Dự án train thêm theo dõi drift và điều kiện để train lại | AI/ML | 1 |
+| 3 | Nút góp ý trong app, gửi kèm ảnh chụp ngữ cảnh đã ẩn danh, đủ để tái hiện lỗi | PM | Bản phát hành đầu |
+| 4 | Runbook: cách deploy, rollback, khôi phục backup, đổi key; ai xử lý khi có sự cố | DevOps | 1 |
 
 **Việc định kỳ:**
 
-| Việc | Ai | Nhịp |
+| Việc | Ai | Khi nào |
 |---|---|---|
-| Rà lỗi và phản hồi, phân loại thành Bug, CR hoặc dòng eval mới | PM + AI/ML | Hằng tuần, trước planning |
-| Lỗi hành vi AI thật: ẩn danh, thêm vào tập dev; ca tương tự bổ sung vào tập test theo định kỳ | QA/Eval | Mỗi lỗi |
-| So chi phí và độ trễ với ngân sách | DevOps | Hằng tuần |
-| Nhà cung cấp đổi model hay API: chạy lại eval tập dev; luôn ghim phiên bản model | AI/ML | Khi có thay đổi |
-| Cập nhật thư viện, vá bảo mật | TL | Hằng tháng |
-| Thử khôi phục từ bản sao lưu | DevOps | Hằng tháng |
+| Rà lỗi và góp ý, phân loại thành Bug, CR hoặc dòng eval mới | PM + AI/ML | Hằng tuần, trước buổi planning |
+| Lỗi hành vi AI gặp trên prod: ẩn danh rồi thêm vào dev set. Định kỳ bổ sung ca tương tự vào test set | QA/Eval | Mỗi khi có lỗi |
+| So chi phí và latency với ngân sách | DevOps | Hằng tuần |
+| Nhà cung cấp đổi model hoặc API: chạy lại eval trên dev set. Luôn ghim phiên bản model | AI/ML | Khi có thay đổi |
+| Cập nhật thư viện, vá lỗ hổng bảo mật | TL | Hằng tháng |
+| Thử khôi phục từ backup | DevOps | Hằng tháng |
 
 **Sự cố:**
 
-- **Nghiêm trọng** (prod sập, lộ PII, sai tiền hoặc sai quyền): rollback trước, tìm nguyên nhân sau, báo cả nhóm ngay.
-  Trong 48 giờ viết postmortem không đổ lỗi cho cá nhân: chuyện gì xảy ra, vì sao, sửa gì để không lặp lại.
-- **Thường:** mở Issue Bug trong ngày, đưa vào milestone kế tiếp.
+- Sự cố nghiêm trọng là khi prod sập, lộ PII, sai tiền hoặc sai quyền. Lúc đó rollback trước, tìm nguyên nhân sau, và
+  báo cả nhóm ngay. Trong 48 giờ, người xử lý viết postmortem: chuyện gì xảy ra, vì sao, sửa gì để không lặp lại.
+  Postmortem không đổ lỗi cho cá nhân.
+- Sự cố thường thì mở Issue Bug ngay trong ngày và đưa vào milestone kế tiếp.

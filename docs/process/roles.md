@@ -1,44 +1,47 @@
 # Vai trò
 
-> **Người đọc:** cả nhóm khi chia vai ở kickoff, và người review khi xác định ai phải duyệt. File này ghi mỗi vai giữ gì,
-> chốt gì, cách ghép người, và luật tránh xung đột. Ai giữ vai nào trong dự án ghi ở [`team.md`](team.md).
+> Trang này dành cho cả nhóm lúc phân vai ở kickoff, và cho người review khi cần biết ai phải duyệt PR. Ai giữ vai nào
+> trong dự án thì ghi ở [`team.md`](team.md).
 
-**Vai là người giữ và chốt một mảng, không phải người duy nhất được làm.** Giai đoạn nào mọi người cũng có việc. Ai
-cũng được viết nháp, góp ý và mở PR vào mảng của vai khác; người giữ vai review và chốt.
+Vai là người giữ và chốt một mảng, không phải người duy nhất được làm mảng đó. Giai đoạn nào thì mọi người cũng có việc.
+Ai cũng có thể viết nháp, góp ý hay mở PR vào mảng của người khác, còn người giữ vai sẽ review và chốt.
 
 ## Năm vai
 
-| Vai | Giữ | Chốt |
+| Vai | Phụ trách | Có quyền chốt |
 |---|---|---|
-| PM + BA | Phạm vi, ưu tiên, lịch; `brief.md`, `prd.md`, `domain/`, sổ câu hỏi; đầu mối với người ngoài nhóm | Nghiệm thu, CR về phạm vi |
-| Tech Lead (TL) | Kiến trúc, ADR, `SPEC.md`, hợp đồng chung, convention, `tasks/plan.md` | ADR, CR kỹ thuật, hợp đồng chung, migration |
-| SWE frontend (FE) | `ui-flow.md`, design system, `architecture/frontend.md` | Thiết kế màn hình, thành phần giao diện dùng chung |
-| AI/ML | Agent hoặc pipeline, prompt, model, RAG, `architecture/ai.md` | Thay đổi prompt, model |
-| QA/Eval + DevOps | `eval/plan.md`, bộ dữ liệu, CI, staging, deploy, giám sát | Cổng phát hành |
+| PM + BA | Phạm vi, thứ tự ưu tiên, lịch; `brief.md`, `prd.md`, `domain/`, sổ câu hỏi; làm đầu mối với người ngoài nhóm | Nghiệm thu, CR về phạm vi |
+| Tech Lead (TL) | Kiến trúc, ADR, `SPEC.md`, shared contract, convention, `tasks/plan.md` | ADR, CR kỹ thuật, shared contract, migration |
+| SWE frontend (FE) | `ui-flow.md`, design system, `architecture/frontend.md` | Thiết kế màn hình, component dùng chung |
+| AI/ML | Agent hoặc pipeline, prompt, model, RAG, `architecture/ai.md` | Thay đổi prompt và model |
+| QA/Eval + DevOps | `eval/plan.md`, dataset, CI, staging, deploy, monitoring | Release gate |
 
-**Ngoài nhóm:** người đặt hàng hoặc người nắm nghiệp vụ trả lời câu hỏi và xác nhận luật nghiệp vụ. PM là đầu mối.
+Ngoài nhóm còn có người đặt hàng hoặc người nắm nghiệp vụ. Họ trả lời câu hỏi và xác nhận luật nghiệp vụ, PM là người
+liên lạc với họ.
 
 ## Ghép người
 
-| Nhóm | Ghép |
+| Nhóm | Cách ghép |
 |---|---|
 | 5 người | Mỗi người một vai như bảng trên |
-| 4 người | PM/BA kiêm rà nhãn eval và cho người dùng thử; DevOps chuyển về TL |
-| Hơn 5 người | Thêm SWE làm feature; vai không đổi, người thêm vào review theo mảng mình quen |
+| 4 người | PM/BA kiêm luôn rà nhãn eval và tổ chức cho người dùng thử. Phần DevOps chuyển sang TL |
+| Hơn 5 người | Thêm người làm feature. Vai giữ nguyên, người mới review theo mảng mình rành |
 
-QA/Eval tách khỏi AI/ML để người đo không đồng thời là người tối ưu cho đạt chỉ số. QA/Eval ghép với DevOps vì cả hai
-giữ đường ống (CI, staging, bộ chạy eval) và việc DevOps dồn nhiều vào đầu dự án.
+QA/Eval nên tách khỏi AI/ML, để người đo không đồng thời là người đang cố tối ưu cho đạt chỉ số. QA/Eval kiêm DevOps là
+hợp lý vì cả hai cùng lo pipeline (CI, staging, chạy eval), và việc DevOps chủ yếu dồn vào đầu dự án.
 
-## Lúc build: hai trục
+## Lúc build
 
-- **Ai làm:** chia theo feature hoặc lát dọc. Một người cùng agent làm trọn một feature, cả BE, FE và AI. Cách này
-  tránh chờ nhau và đụng nhau ở ranh giới giữa các tầng.
-- **Ai giữ chất lượng:** người giữ vai là người review bắt buộc của mảng đó, khai trong CODEOWNERS. PR đụng mảng ngoài
-  chuyên môn của người viết vẫn có người hiểu mảng đó duyệt.
+Lúc build, việc được chia theo một cách, còn trách nhiệm review theo một cách khác.
 
-## Tránh xung đột
+- **Ai làm gì:** chia theo feature hoặc vertical slice. Một người cùng agent làm trọn một feature, cả backend, frontend
+  và AI. Như vậy không ai phải ngồi chờ người khác, và cũng ít đụng nhau ở chỗ giao giữa các tầng.
+- **Ai duyệt:** người giữ vai là code owner của mảng mình, khai trong CODEOWNERS. Nhờ vậy, khi ai đó sửa vào mảng không
+  phải chuyên môn của họ, vẫn có người rành mảng đó duyệt.
 
-- Người viết code không tự duyệt PR của mình.
-- Người viết CR không là người duyệt duy nhất.
-- Người tối ưu prompt không rà nhãn tập test.
-- Mỗi tài liệu chốt có ít nhất một người khác người viết đã duyệt.
+## Tránh xung đột lợi ích
+
+- Không tự duyệt PR của chính mình.
+- Người viết CR không được là người duyệt duy nhất.
+- Người tối ưu prompt không rà nhãn test set.
+- Tài liệu nào muốn chốt cũng phải có ít nhất một người khác người viết duyệt.

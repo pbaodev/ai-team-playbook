@@ -1,26 +1,27 @@
-# Nhóm — <tên dự án>
+# Nhóm: <tên dự án>
 
-> **Người đọc:** cả nhóm. Điền ở buổi kickoff (GĐ0, xem [`phases.md`](phases.md)); sửa sau đó qua PR, ghi ngày và lý
-> do. Mặc định của playbook ở [`working-agreement.md`](working-agreement.md); ở đây chỉ ghi chỗ nhóm chọn khác.
+> Trang này dành cho cả nhóm. Nhóm điền ở buổi kickoff (GĐ0, xem [`phases.md`](phases.md)), sau đó muốn sửa thì mở PR,
+> ghi ngày và lý do. Luật mặc định nằm ở [`working-agreement.md`](working-agreement.md), ở đây chỉ ghi những chỗ nhóm
+> chọn khác.
 
 ## Mục tiêu và mốc
 
 - **Mục tiêu:** <một câu>
-- **Ngày phát hành mục tiêu:** <YYYY-MM-DD>
-- **Nhịp review:** <thứ, giờ> hằng tuần
+- **Ngày phát hành dự kiến:** <YYYY-MM-DD>
+- **Lịch review:** <thứ, giờ> hằng tuần
 
-| Milestone | Ngày mục tiêu | Nội dung |
+| Milestone | Ngày dự kiến | Nội dung |
 |---|---|---|
-| M1 | | Bộ khung chạy được trên staging |
+| M1 | | Walking skeleton chạy trên staging |
 | | | |
 
 ## Vai trò
 
-| Vai | Người | Mảng review bắt buộc (CODEOWNERS) |
+| Vai | Người | Là code owner của |
 |---|---|---|
 | PM + BA | @ | `docs/prd.md`, `docs/domain/` |
-| Tech Lead | @ | Hợp đồng chung, migration, `docs/SPEC.md` |
-| SWE frontend | @ | Thành phần giao diện dùng chung |
+| Tech Lead | @ | Shared contract, migration, `docs/SPEC.md` |
+| SWE frontend | @ | Component dùng chung |
 | AI/ML | @ | Prompt, model, agent |
 | QA/Eval + DevOps | @ | `eval/`, CI, hạ tầng |
 
@@ -34,9 +35,9 @@ Người nắm nghiệp vụ ngoài nhóm: <tên, cách liên lạc>.
 | Tracker | GitHub Issues / GitLab Issues / Jira |
 | Chat | |
 | AI agent | |
-| Trình quản lý mật khẩu | |
+| Password manager | |
 
-## Luật nhóm sửa so với mặc định
+## Luật nhóm đổi so với mặc định
 
 | Luật | Mặc định | Nhóm chọn | Lý do | Ngày |
 |---|---|---|---|---|
