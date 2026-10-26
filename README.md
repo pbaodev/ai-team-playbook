@@ -7,17 +7,18 @@ dự án train hoặc fine-tune model.
 
 ## Gồm gì
 
-- **Quy trình:** 6 giai đoạn, vai trò, luật làm việc, kiểm soát thay đổi.
+- **Quy trình** ([`docs/process/`](docs/process/README.md)): 6 giai đoạn, vai trò, luật làm việc, kiểm soát thay đổi.
 - **Mẫu tài liệu:** brief, PRD, SPEC, ARCHITECTURE, ADR, kế hoạch eval, convention, mẫu Issue và PR.
 - **Plugin Claude Code:** skill hỗ trợ từng giai đoạn.
 
 ## Dùng thế nào
 
-Bấm **Use this template** trên GitHub để tạo repo cho dự án mới, rồi bắt đầu từ giai đoạn Khởi động.
+Bấm **Use this template** trên GitHub để tạo repo cho dự án mới, rồi làm GĐ0 Khởi động theo
+[`docs/process/phases.md`](docs/process/phases.md).
 
 ## Trạng thái
 
-Đang dựng theo thứ tự: quy trình, mẫu tài liệu, plugin.
+Phần quy trình đã xong. Tiếp theo là mẫu tài liệu, sau đó tới plugin.
 
 ## License
 
