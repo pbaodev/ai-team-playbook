@@ -1,0 +1,24 @@
+# AI Team Playbook
+
+Khung phát triển sản phẩm AI cho nhóm 4–5 người làm cùng AI agent viết code. Dùng được cho cả dự án gọi API LLM lẫn
+dự án train hoặc fine-tune model.
+
+**Người đọc:** nhóm bắt đầu một dự án AI mới, và AI agent làm việc trong repo của nhóm đó.
+
+## Gồm gì
+
+- **Quy trình:** 6 giai đoạn, vai trò, luật làm việc, kiểm soát thay đổi.
+- **Mẫu tài liệu:** brief, PRD, SPEC, ARCHITECTURE, ADR, kế hoạch eval, convention, mẫu Issue và PR.
+- **Plugin Claude Code:** skill hỗ trợ từng giai đoạn.
+
+## Dùng thế nào
+
+Bấm **Use this template** trên GitHub để tạo repo cho dự án mới, rồi bắt đầu từ giai đoạn Khởi động.
+
+## Trạng thái
+
+Đang dựng theo thứ tự: quy trình, mẫu tài liệu, plugin.
+
+## License
+
+[MIT](LICENSE)
