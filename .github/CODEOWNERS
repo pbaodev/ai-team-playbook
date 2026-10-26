@@ -1,0 +1,11 @@
+# Code owner của từng mảng, điền ở kickoff (GĐ0) theo bảng Vai trò trong docs/process/team.md.
+# Bỏ dấu # ở đầu dòng khi đã điền tên GitHub. Dòng ở dưới ghi đè dòng ở trên.
+#
+# *                       <tech-lead>
+# /docs/prd.md            <pm>
+# /docs/domain/           <pm>
+# /docs/SPEC.md           <tech-lead>
+# /migrations/            <tech-lead>
+# /src/agent/             <ai-ml>
+# /eval/                  <qa-eval>
+# /.github/               <qa-eval>
