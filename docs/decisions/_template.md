@@ -1,30 +1,32 @@
-# ADR-NNN: <quyết định, viết ngắn>
+# ADR-[NNNN]: [quyết định, viết ngắn]
 
-> Mỗi quyết định kỹ thuật lớn một ADR. Đặt tên file `ADR-NNN-<ten-ngan>.md`, số tăng dần. ADR đã Accepted thì không sửa
-> phần Quyết định nữa. Muốn đổi thì viết ADR mới thay thế, theo [`change-control.md`](../process/change-control.md).
+- **Status:** [Proposed | Accepted | Rejected | Superseded by ADR-NNNN]
+- **Date:** [YYYY-MM-DD]
+- **Deciders:** [@handle]
+- **Related:** [Q-xxx, A-xxx, BR-xxx, link tài liệu]
 
-- **Trạng thái:** Proposed / Accepted / Superseded by ADR-NNN
-- **Ngày:** <YYYY-MM-DD>
-- **Người quyết:** @
+> Mỗi quyết định kỹ thuật khó đảo ngược có một ADR. Đặt tên file `NNNN-short-title.md` trong thư mục này, số tăng dần;
+> ADR đầu tiên thường là `0001-ai-approach.md`. Tạo xong thì thêm một dòng vào [Index](README.md), ghi cả phương án
+> không chọn. ADR đã `Accepted` thì không sửa mục Decision; muốn đổi thì viết ADR mới thay thế, theo
+> [change-control.md](../playbook/change-control.md). Dòng in nghiêng là ví dụ, xóa khi điền.
 
-## Bối cảnh
+## Context
 
-<!-- Cần quyết chuyện gì, có ràng buộc gì. Link tới câu hỏi Q-NNN, giả định A-NNN, tài liệu trong docs/domain/. -->
+[Cần quyết chuyện gì, có ràng buộc và bằng chứng nào. Phân biệt điều đã biết với assumption.]
 
-## Quyết định
+## Decision
 
-<!-- Chọn gì, nói cụ thể. -->
+[Chọn gì và áp dụng cho phạm vi nào, nói cụ thể.]
 
-## Các phương án đã cân nhắc
+## Options considered
 
-| Phương án | Được gì | Mất gì | Chi phí |
+| Option | Pros | Cons | Cost |
 |---|---|---|---|
-| | | | |
+| *Prompt và few-shot* | *Làm nhanh, không cần dữ liệu train* | *Trích sai mã đơn ở 4/30 mẫu spike* | *Khoảng $0.004 mỗi email* |
+| *RAG trên kho chính sách* | *Chính sách đổi không cần sửa prompt* | *Phải dựng index; thêm một bước gọi* | *Khoảng $0.006 mỗi email* |
 
-Phương án nào không chọn thì chép thêm một dòng vào [`rejected-options.md`](rejected-options.md).
+## Consequences
 
-## Hệ quả
-
-- Việc gì dễ hơn:
-- Việc gì khó hơn, phải đánh đổi gì:
-- Việc cần làm tiếp:
+- **Easier:** [việc gì dễ hơn]
+- **Harder:** [việc gì khó hơn, phải đánh đổi gì]
+- **Follow-up:** [việc cần làm tiếp, cách kiểm tra các assumption quan trọng]

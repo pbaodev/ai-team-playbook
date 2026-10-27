@@ -1,23 +1,27 @@
-# Sổ câu hỏi và giả định
+# Questions and assumptions
 
-> Mọi câu hỏi gửi cho người ngoài nhóm đều ghi ở đây. PM là người gửi, kèm mã `Q-NNN` để người được hỏi không nhận cùng
-> một câu từ nhiều người. Câu trả lời nhận qua chat phải chép vào đây, ghi rõ ai trả lời và ngày nào.
+- **Owner:** [Product]
+- **Updated:** [YYYY-MM-DD]
 
-Cột Mức có ba giá trị. **Chặn spec** nghĩa là chưa có trả lời thì chưa viết được spec. **Trước build** nghĩa là cần có
-trước khi làm phần liên quan. **Biết thì tốt** thì không chặn việc gì. Cột Trạng thái đi theo thứ tự: mở, đã hỏi, rồi
-đã trả lời hoặc đã thành giả định.
+> Mọi câu hỏi gửi người ngoài nhóm ghi ở đây. Product là người gửi, kèm mã `Q-xxx` để người được hỏi không nhận cùng
+> một câu từ nhiều người. Câu trả lời nhận qua chat được chép vào đây, ghi người trả lời và ngày. Dòng in nghiêng là ví
+> dụ, xóa khi điền.
 
-## Câu hỏi
+## Questions
 
-| Mã | Câu hỏi | Vì sao cần biết | Mức | Hỏi ai | Người phụ trách | Trạng thái | Trả lời | Ai trả lời, ngày |
-|---|---|---|---|---|---|---|---|---|
-| Q-001 | | | | | | Mở | | |
+- **Priority:** `blocks-spec` (chưa có trả lời thì chưa viết được SPEC), `blocks-build` (cần trước khi làm phần liên
+  quan), `nice-to-know` (không chặn việc gì).
+- **Status:** `Open` → `Asked` → `Answered`, hoặc `Assumed` khi đã chuyển thành assumption.
 
-## Giả định
+| ID | Question | Why it matters | Priority | Ask | Owner | Status | Answer (by, date) |
+|---|---|---|---|---|---|---|---|
+| *Q-001* | *Đơn quá 30 ngày có được hoàn tiền không?* | *Quyết định luật BR-004 và nhánh xử lý của bản nháp* | *blocks-spec* | *Trưởng nhóm CSKH* | *[@handle]* | *Answered* | *Không, trừ lỗi do kho (Trưởng nhóm CSKH, 2026-11-03)* |
 
-Câu hỏi chưa có trả lời mà nhóm vẫn phải làm tiếp thì ghi thành giả định. PM duyệt giả định, và người nắm nghiệp vụ phải
-xác nhận lại trước GĐ4. Giả định nào có con số thì đưa số đó vào config, để khi câu trả lời khác đi chỉ cần sửa config.
+## Assumptions
 
-| Mã | Từ câu hỏi | Giả định | Nếu sai thì ảnh hưởng tới đâu | Người duyệt | Đã xác nhận |
+Câu hỏi chưa có trả lời mà vẫn phải làm tiếp thì ghi thành assumption. Product duyệt; người nắm nghiệp vụ xác nhận lại
+trước Phase 4. Assumption là con số thì đặt trong config.
+
+| ID | From | Assumption | Impact if wrong | Approved by | Confirmed |
 |---|---|---|---|---|---|
-| A-001 | Q-001 | | | | |
+| *A-001* | *Q-002* | *Mỗi email chỉ nói về một đơn hàng* | *Phải tách email nhiều đơn; đổi data model và prompt* | *[@handle]* | *No* |

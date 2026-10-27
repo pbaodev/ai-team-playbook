@@ -1,13 +1,17 @@
-.PHONY: setup check
+.DEFAULT_GOAL := help
+.PHONY: help setup check
 
-# Lệnh chuẩn của dự án. Quy trình, CI và AI agent đều gọi đúng các tên lệnh này, nên mỗi dự án chỉ thay phần thân
-# theo stack của mình, giữ nguyên tên lệnh.
+# Cấu hình setup và check theo stack ở Phase 2, rồi ghi lệnh vào mục Commands của docs/SPEC.md.
+# Dùng công cụ khác Make thì cập nhật mục đó và CI tương ứng.
+help:
+	@echo "Template chưa có lệnh setup hoặc kiểm tra ứng dụng."
+	@echo "Cấu hình ở Phase 2; lệnh của dự án ghi tại mục Commands trong docs/SPEC.md."
+	@echo "CI hiện chỉ kiểm tra link trong tài liệu."
 
-# Cài dependency, tạo .env từ .env.example nếu chưa có.
 setup:
-	@test -f .env || cp .env.example .env
-	@echo "setup: thêm lệnh cài dependency của stack vào Makefile"
+	@echo "setup chưa được cấu hình. Thêm lệnh cài đặt thật hoặc dùng công cụ của dự án." >&2
+	@exit 1
 
-# Lint, format, type, test. Chạy trước khi mở PR; CI cũng chạy lệnh này.
 check:
-	@echo "check: thêm lint, format, type, test của stack vào Makefile"
+	@echo "check chưa được cấu hình. Chưa chạy lint, kiểm kiểu hay test ứng dụng." >&2
+	@exit 1

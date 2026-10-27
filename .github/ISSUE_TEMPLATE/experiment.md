@@ -1,31 +1,37 @@
 ---
 name: Experiment
-about: Thử một model, prompt, cách train hay tham số, có giới hạn thời gian
+about: Thử một giả thuyết trong giới hạn thời gian và chi phí
 title: "exp: "
 labels: experiment
 assignees: ""
 ---
 
-## Giả thuyết
+> Kết quả experiment chưa phải quyết định. Muốn áp dụng vào sản phẩm thì mở Task; nếu đổi hướng thì viết ADR.
 
-<!-- Nếu làm X thì chỉ số Y sẽ thay đổi thế nào, và vì sao mình nghĩ vậy. -->
+## Hypothesis
 
-## Cách thử
+[Nếu làm X thì metric Y thay đổi thế nào, và vì sao cần biết.]
 
-- Dataset: <!-- dev set, không dùng test set -->
-- Model, config:
-- So với: <!-- baseline hoặc bản đang chạy -->
+## Setup
 
-## Giới hạn thời gian
+- **Change:** [prompt, model, config hoặc phương pháp được thử]
+- **Dataset:** [dev set và version; không dùng test set]
+- **Baseline:** [so với gì]
+- **Metric:** [metric và scorer, lấy từ eval plan nếu có]
+- **Limit:** [thời gian và chi phí tối đa; chạm giới hạn thì dừng]
 
-<!-- Ví dụ 1 ngày. Hết giờ thì dừng và ghi kết quả, kể cả khi chưa có kết luận. -->
+## Decision rule
 
-## Khi nào coi là thành công
+[Kết quả thế nào thì áp dụng, thử tiếp hoặc dừng. Viết trước khi chạy.]
 
-## Kết quả
+## Results
 
-<!-- Số đo và link tới eval/results. Kết quả âm tính cũng ghi lại. -->
+| Run | Version | Result | Cost |
+|---|---|---|---|
+| | | | |
 
-## Làm gì tiếp
+[Ghi cả kết quả không ủng hộ giả thuyết.]
 
-<!-- Áp dụng (mở task hoặc CR), thử hướng khác, hay bỏ. -->
+## Next step
+
+[Adopt | Iterate | Stop], kèm link Task hoặc ADR.

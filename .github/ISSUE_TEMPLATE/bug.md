@@ -1,32 +1,39 @@
 ---
 name: Bug
-about: Hành vi khác với spec hoặc khác với mong đợi
-title: "fix: "
+about: Hành vi khác với SPEC, PRD hoặc kết quả mong đợi
+title: ""
 labels: bug
 assignees: ""
 ---
 
-## Lỗi gì
+> Không đưa secret hay dữ liệu thật của người dùng vào Issue. Che thông tin nhạy cảm trước khi dán log hoặc ảnh.
 
-## Cách tái hiện
+## Impact
 
-1.
-2.
+- **Severity:** [Severe | Normal], theo mục Incident ở Phase 5 trong `docs/playbook/phases.md`
+- **Who and what:** [ai gặp lỗi, việc gì bị ảnh hưởng]
 
-## Mong đợi
+## Steps to reproduce
 
-<!-- Link tới mục spec nếu có. -->
+1. [bước]
 
-## Thực tế
+[Lỗi không xảy ra mọi lần thì ghi tần suất.]
 
-<!-- Log, ảnh chụp. Che PII trước khi dán. -->
+## Expected
 
-## Môi trường
+[Hành vi đúng, dẫn tới mục SPEC, US-xxx hoặc BR-xxx.]
 
-- Nhánh hoặc commit:
-- Chạy ở đâu: local, staging hay prod
+## Actual
 
-## Muốn sửa thì có phải đổi hành vi đã ghi trong spec không?
+[Kết quả quan sát được, kèm log hoặc ảnh đã che thông tin nhạy cảm.]
 
-- [ ] Không, chỉ sửa cho đúng spec
-- [ ] Có, phải mở CR và được duyệt trước khi sửa
+## Environment
+
+- **Environment:** [local | staging | production]
+- **Version:** [commit hoặc tag]
+- **AI:** [model ID, version prompt; bỏ nếu lỗi không liên quan tới AI]
+
+## Notes
+
+[Nguyên nhân nghi ngờ, nếu có. Sửa lỗi mà phải đổi hành vi đã ghi trong SPEC thì mở CR. Lỗi hành vi AI: ẩn danh rồi
+thêm ca vào dev set.]

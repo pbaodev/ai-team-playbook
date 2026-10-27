@@ -1,42 +1,51 @@
 ---
 name: Change Request
-about: Đổi hành vi đã ghi trong spec, kể cả đổi model mặc định, ngưỡng hay test set
+about: Đổi hành vi, interface, phạm vi, model hoặc eval đã chốt
 title: "CR: "
 labels: change-request
 assignees: ""
 ---
 
-> CR phải được duyệt trước khi bắt đầu làm. Cách làm xem ở `docs/process/change-control.md`.
+> Dùng khi thay đổi thuộc loại cần CR trong `docs/playbook/change-control.md`. Mã CR là `CR-` cộng số Issue này.
 
-## Đổi gì
+## Change
 
-## Vì sao
+- **Current:** [hành vi, interface hoặc quy tắc hiện tại; dẫn tới SPEC, PRD hoặc ADR]
+- **Proposed:** [thay đổi đề xuất]
+- **Why:** [nhu cầu hoặc bằng chứng]
 
-<!-- Nguồn: góp ý người dùng, lỗi phát hiện, kết quả eval… Link Issue hoặc câu hỏi Q-NNN nếu có. -->
+## Type
 
-## Ảnh hưởng
+- [ ] Behavior (Product duyệt)
+- [ ] Interface, schema hoặc migration (Tech Lead duyệt)
+- [ ] Scope or approach (Product duyệt)
+- [ ] Model or provider (AI/ML duyệt)
+- [ ] Eval: test set, nhãn, cách chấm hoặc ngưỡng (QA/Eval duyệt)
 
-- Mục spec:
-- ADR:
-- Task:
-- Eval: <!-- Nếu đổi prompt, model hay ngưỡng thì ghi kết quả trước và sau -->
-- Tiến độ:
+## Impact
 
-## Các phương án
+| Area | Impact |
+|---|---|
+| User stories | [US-xxx] |
+| Rules and data | [BR-xxx, schema] |
+| Interfaces | [contract, bên dùng bị ảnh hưởng] |
+| Eval | [metric, dataset cần đổi] |
+| Cost and schedule | [ước tính] |
 
-1.
-2.
+## Options
 
-## Đề xuất
+| Option | Pros | Cons |
+|---|---|---|
+| [phương án đề xuất] | | |
+| Không đổi | | |
 
-## Duyệt
+## Verification
 
-- [ ] PM
-- [ ] Code owner của mảng bị ảnh hưởng: @
-- [ ] Thêm một người khác, nếu PM là người đề xuất
+[Sau khi đổi thì kiểm thế nào; có vấn đề thì quay lại bằng cách nào.]
 
-## Sau khi duyệt
+## Decision
 
-- [ ] PR sửa `prd.md` hoặc `SPEC.md` đã merge
-- [ ] ADR mới, nếu đổi quyết định kỹ thuật
-- [ ] Đã tạo task cho phần code
+- **Decision:** [Approved | Rejected | Deferred]
+- **Decided by:** [@handle], [YYYY-MM-DD]
+- **Reason:** [một câu]
+- **Follow-up PR:** [#PR cập nhật tài liệu, code và test]

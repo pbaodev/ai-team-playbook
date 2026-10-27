@@ -1,24 +1,30 @@
 ---
 name: Task
-about: Một việc vừa một PR
+about: Một việc vừa một PR, có acceptance criteria
 title: ""
 labels: ""
 assignees: ""
 ---
 
-## Mô tả
+## Goal
 
-<!-- Việc gì, vì sao cần làm. -->
+[Kết quả cần đạt, 1–2 câu.]
 
-## Liên quan
+## Links
 
-- Mục SPEC:
-- Task phải xong trước:
+- **SPEC:** [mục SPEC cần đạt]
+- **Stories and rules:** [US-xxx, BR-xxx, EC-xxx]
+- **Depends on:** [#issue phải merge trước; bỏ nếu không có]
 
-## Tiêu chí đạt
+## Scope
 
-- [ ] <!-- Điều kiện kiểm chứng được -->
+- **Change:** [module hoặc file dự kiến sửa]
+- **Non-goals:** [phần không làm trong task này]
 
-## Không làm
+## Acceptance criteria
 
-<!-- Những phần thuộc task khác, để người làm và agent không lấn sang. -->
+- [ ] [điều kiện kiểm tra được, và cách kiểm: test, eval hoặc thử tay]
+
+## Open questions
+
+[Q-xxx hoặc câu hỏi cho người giao việc; bỏ nếu không có.]
