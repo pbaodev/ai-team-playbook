@@ -1,11 +1,13 @@
-# Code owner của từng mảng, điền ở kickoff (GĐ0) theo bảng Vai trò trong docs/process/team.md.
-# Bỏ dấu # ở đầu dòng khi đã điền tên GitHub. Dòng ở dưới ghi đè dòng ở trên.
+# Ví dụ, chưa kích hoạt. Thay handle theo bảng Roles trong docs/team.md rồi bỏ dấu # ở dòng cần dùng.
+# Dòng ở dưới ghi đè dòng ở trên. Muốn bắt buộc code owner duyệt, bật "Require review from Code Owners"
+# trong branch protection của main.
 #
-# *                       <tech-lead>
-# /docs/prd.md            <pm>
-# /docs/domain/           <pm>
-# /docs/SPEC.md           <tech-lead>
-# /migrations/            <tech-lead>
-# /src/agent/             <ai-ml>
-# /eval/                  <qa-eval>
-# /.github/               <qa-eval>
+# *                          @org/tech-lead
+# /docs/brief.md             @org/product
+# /docs/prd.md               @org/product
+# /docs/domain.md            @org/product
+# /docs/SPEC.md              @org/tech-lead
+# /docs/ui-flow.md           @org/ux
+# /docs/architecture/ai.md   @org/ai-ml
+# /eval/                     @org/qa-eval
+# /.github/                  @org/ops

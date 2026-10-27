@@ -1,58 +1,66 @@
-# Kiến trúc AI
+# AI architecture
 
-> AI/ML giữ file này. Nó mô tả agent hoặc pipeline gồm những bước nào, gọi LLM ở đâu, giữ state ra sao và có những
-> guardrail gì. Cách viết prompt và code AI xem ở `docs/conventions/ai.md`, cách đo xem ở `eval/plan.md`.
+- **Status:** [Draft | Accepted | Superseded]
+- **Owner:** [AI/ML]
+- **Updated:** [YYYY-MM-DD]
+- **Related:** [ARCHITECTURE](../../ARCHITECTURE.md) · ADR-0001 · [eval plan](../../eval/plan.md)
 
-## Hướng đã chọn
+> Điền ở Phase 2 khi phần AI có hơn một lần gọi model; nếu chỉ một lần thì gộp vào ARCHITECTURE.md. Chỉ ghi phần AI
+> thực sự có; không thêm hội thoại, tool hay agent cho đủ mẫu. Hướng tiếp cận và lý do chọn nằm ở ADR-0001. Dòng in
+> nghiêng là ví dụ, xóa khi điền.
 
-<!-- Prompt, RAG, fine-tune hay train, kèm link tới ADR chọn hướng. -->
+## Task
 
-## Agent graph hoặc pipeline
+- **Input:** [AI nhận gì]
+- **Output:** [AI tạo ra gì, ai dùng]
+- **Approach:** [rule-based / prompt / RAG / fine-tune / train, theo ADR-0001]
+- **Done by code:** [phần tính toán, kiểm quyền, so ngưỡng. LLM chọn, code tính.]
+- **Needs a human:** [bước cần người xác nhận trước khi dùng kết quả]
 
-<!-- Thay sơ đồ mẫu bằng graph thật. -->
+## Pipeline
 
-```mermaid
-flowchart LR
-  input["Tin nhắn"] --> mask["Che PII"]
-  mask --> classify["Phân loại ý định"]
-  classify --> tool["Gọi tool"]
-  tool --> answer["Trả lời"]
-```
-
-## Node và tool
-
-| Node hoặc tool | Làm gì | Có gọi LLM không | Model | Contract |
+| Step | Input → Output | Model or service | Prompt or config | On failure |
 |---|---|---|---|---|
-| | | | | |
+| *extract* | *Email → mã đơn, lý do* | *[model ID]* | *`prompts/extract.md` v2* | *Thiếu mã đơn: trả `needs_info`, không đoán* |
+| *compute* | *Mã đơn → số tiền hoàn* | *Code, không dùng LLM* | *`config/policy.yaml`* | *Không tìm thấy đơn: báo CSKH* |
+| *draft* | *Thông tin đơn, chính sách → bản nháp* | *[model ID]* | *`prompts/draft.md` v4* | *Sai schema: gọi lại 1 lần, rồi báo lỗi* |
 
-## State và memory
+- **LLM calls in sequence:** [số lần gọi nối tiếp trong một request] · **Latency budget:** [p95]
+- **Retrieval:** [nguồn, cách cập nhật index, ai được truy xuất gì]
+- **Tools:** [contract, cách kiểm quyền, xử lý khi bị gọi lặp hoặc chưa biết kết quả]
+- **State:** [lưu gì giữa các lượt, trong bao lâu]
 
-<!-- Lưu gì trong một lượt, trong một hội thoại, lưu ở đâu và bao lâu. -->
+Bỏ dòng không áp dụng.
 
-## Latency và chi phí mỗi lượt
+## Guardrails
 
-<!--
-Ghi rõ một lượt gọi LLM mấy lần nối tiếp nhau, vì latency cộng dồn theo số lần đó.
-Nếu tổng vượt ngân sách trong eval/plan.md thì ghi luôn cách giảm: chạy song song, model nhỏ hơn cho bước đơn giản, cache.
--->
+Chỉ ghi rủi ro có thật với sản phẩm, lấy từ failure mode trong brief. Status `Planned` nghĩa là chưa có bằng chứng
+biện pháp đó đã hoạt động.
 
-| Bước | Gọi LLM | Nối tiếp bước trước | Latency dự kiến |
+| Risk | Control | Where | Status |
 |---|---|---|---|
-| | | | |
+| *Đầu ra sai định dạng* | *Validate theo JSON schema* | *`src/drafting/validate.py`* | *Done* |
+| *Prompt injection qua nội dung email* | *Email đặt trong khối dữ liệu; tool chỉ có quyền đọc* | *[vị trí]* | *Planned* |
+| *PII gửi tới provider* | *Che số điện thoại và địa chỉ trước khi gọi LLM* | *[vị trí]* | *Planned* |
 
-## Guardrail
+## Versioning
 
-<!--
-- Che PII ở đâu, trước khi gửi LLM và ở mọi đường dữ liệu vào.
-- Chống prompt injection thế nào.
-- Việc nào bắt buộc người duyệt.
-- Luật nào code tính, không để LLM tự quyết.
--->
+- **Prompts:** [nơi lưu, cách đánh version]
+- **Model:** [model ID; ghim version nếu provider hỗ trợ, nếu không thì ghi cách phát hiện provider đổi model]
+- **By environment:** [phần nào khác nhau giữa staging và production]
+- **Rollout:** [cách đưa prompt hoặc model mới vào dùng, cách quay lại bản cũ]
 
-## Thêm một feature
+## Cost and latency
 
-<!-- Feature mới thêm node, tool, prompt ở đâu mà không phải sửa file trung tâm. -->
+| Unit | Estimated | Measured | Budget |
+|---|---|---|---|
+| *Một email* | *$0.004, 3.2 s (spike Phase 1)* | *[link kết quả eval]* | *< $0.01, p95 < 5 s* |
 
-## Phần train
+## Training
 
-<!-- Chỉ điền nếu dự án train hoặc fine-tune: data pipeline, training pipeline, model registry, cách serve. Không thì xoá mục này. -->
+Bỏ mục này nếu không train hoặc fine-tune.
+
+- **Data:** [nguồn, cách chia train / validation / test, cách tránh leakage]
+- **Experiments:** [nơi chạy, cách ghi tham số và kết quả]
+- **Artifacts:** [nơi lưu model và version, cách quay lại version trước]
+- **Before use:** [model phải đạt gì so với baseline trước khi đưa vào dùng]

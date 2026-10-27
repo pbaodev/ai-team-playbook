@@ -1,37 +1,47 @@
 # AI Team Playbook
 
-Khung phát triển sản phẩm AI cho nhóm 4–5 người làm cùng AI agent viết code. Dùng được cho cả dự án gọi API LLM lẫn
-dự án train hoặc fine-tune model.
+Template để nhóm người cùng AI agent xây sản phẩm có phần AI, từ khi nhận yêu cầu tới khi vận hành. Template gồm quy
+trình sáu phase, các mẫu tài liệu và cấu hình GitHub. Mỗi phần có default cho nhóm 3–6 người làm sản phẩm có người dùng
+thật; nhóm làm khác ở đâu thì ghi lại chỗ đó.
 
-**Người đọc:** nhóm bắt đầu một dự án AI mới, và AI agent làm việc trong repo của nhóm đó.
+## Structure
 
-## Gồm gì
+```text
+AGENTS.md              Hướng dẫn cho AI agent
+ARCHITECTURE.md        Phase 2: kiến trúc tổng thể
+docs/
+  playbook/            Hướng dẫn và default: phase, vai, working agreement, change control, eval, cách viết
+  team.md              Phase 0: người, công cụ, chỗ làm khác default
+  brief.md             Phase 1: có nên làm không, làm theo hướng nào
+  discovery/           Phase 1: yêu cầu gốc, câu hỏi và assumption
+  decisions/           Phase 1 trở đi: ADR và index
+  domain.md            Phase 2: thuật ngữ, luật nghiệp vụ, dữ liệu, edge case
+  ui-flow.md           Phase 2: màn hình và luồng, khi có giao diện
+  architecture/        Phase 2: chi tiết backend, frontend, AI, khi cần
+  conventions/         Phase 2 trở đi: quy tắc code máy không tự kiểm được
+  prd.md               Phase 3: bản này làm gì, thế nào là đạt
+  SPEC.md              Phase 3: tài liệu chính khi làm task
+eval/plan.md           Phase 3: metric, dataset, ngưỡng, lịch chạy eval
+.github/               Mẫu Issue và PR, CODEOWNERS, CI
+```
 
-- **Quy trình** ([`docs/process/`](docs/process/README.md)): 6 giai đoạn, vai trò, luật làm việc, kiểm soát thay đổi.
-- **Mẫu tài liệu:** brief, PRD, SPEC, ARCHITECTURE, ADR, kế hoạch eval, convention, mẫu Issue và PR.
-- **Plugin Claude Code:** skill hỗ trợ từng giai đoạn.
+## Quick start
 
-## Dùng thế nào
+1. Tạo repo bằng **Use this template**.
+2. Đọc [playbook](docs/playbook/README.md): nguyên tắc, sáu phase và bảng Project types để biết dự án cần tài liệu
+   nào.
+3. Phase 0: điền [team.md](docs/team.md), bật branch protection cho `main`.
+4. Đi theo [phases.md](docs/playbook/phases.md). Mỗi phase ghi output, owner và exit criteria.
+5. Xóa mẫu không dùng, ví dụ `ui-flow.md` và `architecture/frontend.md` khi sản phẩm không có giao diện.
+6. Khi biến README này thành README của sản phẩm, giữ link tới playbook và [AGENTS.md](AGENTS.md).
 
-1. Bấm **Use this template** trên GitHub để tạo repo cho dự án mới.
-2. Thay README này bằng README của dự án.
-3. Làm GĐ0 Khởi động theo [`docs/process/phases.md`](docs/process/phases.md).
+## Tooling
 
-## Dùng với GitLab hoặc Jira
-
-Mẫu Issue, PR và CI hiện viết cho GitHub. Nếu nhóm dùng GitLab thì chuyển như sau:
-
-- `.github/ISSUE_TEMPLATE/*.md` sang `.gitlab/issue_templates/`, bỏ phần front matter ở đầu mỗi file.
-- `.github/PULL_REQUEST_TEMPLATE.md` thành `.gitlab/merge_request_templates/Default.md`.
-- `.github/CODEOWNERS` sang `.gitlab/CODEOWNERS`.
-- `.github/workflows/ci.yml` viết lại thành `.gitlab-ci.yml`, giữ hai job: `make check` và kiểm tra link.
-
-Nếu dùng Jira, tạo các loại issue Task, Bug, Change Request, Experiment với các trường giống mẫu trong
-`.github/ISSUE_TEMPLATE/`. Tên nhánh và commit ghi mã Jira (ví dụ `PROJ-123`) để Jira tự link sang.
-
-## Trạng thái
-
-Phần quy trình đã xong. Tiếp theo là mẫu tài liệu, sau đó tới plugin.
+- `.github/` dành cho GitHub. Dùng GitLab hoặc Jira thì chuyển mẫu Issue và PR sang công cụ đó, rồi ghi lựa chọn vào
+  `team.md`.
+- [CODEOWNERS](.github/CODEOWNERS) mới chỉ có ví dụ đã comment.
+- CI hiện chỉ kiểm link nội bộ trong các file Markdown. `make setup` và `make check` trả lỗi "chưa được cấu hình" cho
+  tới khi nhóm cấu hình theo stack ở Phase 2.
 
 ## License
 

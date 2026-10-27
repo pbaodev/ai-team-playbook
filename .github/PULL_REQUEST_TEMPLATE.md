@@ -1,30 +1,34 @@
-## Liên kết
+## Summary
 
-- Task: <!-- mã việc trên tracker, ví dụ PROJ-123 -->
-- Mục SPEC, CR hoặc ADR liên quan:
+[Đổi gì và vì sao, 1–3 câu.]
 
-## Thay đổi gì
+## Links
 
-<!-- Vài dòng: sửa gì, vì sao. Người review đọc phần này trước khi đọc code. -->
+- **Task:** [#issue]
+- **SPEC:** [mục liên quan]
+- **CR:** [CR-xxx nếu PR đổi hành vi đã chốt; bỏ nếu không]
 
-## Mức rủi ro
+## Risk
 
-- [ ] Thấp: tài liệu, test, chỉnh giao diện
-- [ ] Thường: tính năng trong một feature
-- [ ] Cao: đụng tới tiền, quyền, PII, prompt, model, migration hoặc shared contract. Cần code owner của mảng đó duyệt và
-      có eval trước, sau
+- [ ] PR đụng tới tiền, quyền, PII, prompt, model, migration hoặc shared contract, nên cần code owner duyệt
 
-## Kiểm tra
+## Verification
 
-- [ ] `make check` xanh
-- [ ] Đã chạy thử thật, không chỉ chạy test
-- [ ] Đạt Definition of Done trong `docs/process/working-agreement.md`
-- [ ] PR đụng tới phần AI: đạt checklist trong `docs/process/eval.md`
+| Check | Environment | Result |
+|---|---|---|
+| `make check` | [local / CI] | |
+| [luồng đã thử tay] | [staging] | |
 
-## Eval
+**AI changes:** eval trên dev set, trước và sau. Bỏ phần này nếu PR không đụng phần AI.
 
-<!-- Chỉ điền khi PR đụng tới phần AI. Xoá mục này nếu không cần. -->
+- **Dataset and version:** [dev set vN] · **Model and prompt:** [model ID, version prompt]
 
-| Chỉ số | Trước | Sau |
+| Metric | Before | After |
 |---|---|---|
 | | | |
+
+**Not verified:** [phần chưa kiểm và lý do]
+
+## Deploy notes
+
+[Migration, config, feature flag, việc cần theo dõi sau khi deploy. Bỏ nếu không có.]
