@@ -27,7 +27,9 @@ Variations. Bảng tóm tắt nằm ở [playbook/README.md](README.md).
 2. Phân vai theo [roles.md](roles.md).
 3. Đọc [working-agreement.md](working-agreement.md); ghi vào `team.md` những chỗ nhóm làm khác default.
 4. Chọn công cụ: Git host, tracker, kênh chat, nơi lưu secret.
-5. Tạo repo từ template, bật branch protection cho `main`, điền [CODEOWNERS](../../.github/CODEOWNERS) nếu dùng.
+5. Tạo repo từ template, bật branch protection cho `main`, điền [CODEOWNERS](../../.github/CODEOWNERS) nếu dùng. Tạo
+   board GitHub Projects với các cột `Todo`, `In progress`, `In review`, `Done`, và bật workflow có sẵn để issue mới
+   tự vào `Todo`.
 6. Lưu tài khoản hạ tầng và key dùng chung vào password manager, ít nhất hai người truy cập được.
 7. Mỗi người tạo API key LLM riêng, có giới hạn chi tiêu.
 
@@ -140,8 +142,8 @@ Bước 1–4 làm trong buổi kickoff.
 4. Dựng golden set 50–100 ca từ mẫu ở Phase 1 và danh sách failure mode, ghi nguồn từng ca. Chia dev set và test set.
    Người rà nhãn khác người dựng. Xong thì freeze test set.
 5. Review độc lập PRD, SPEC và eval plan: một người không viết các file đó, cộng một lượt AI review.
-6. Chia task theo mục Task breakdown, tạo Issue theo [mẫu Task](../../.github/ISSUE_TEMPLATE/task.md) và gom theo
-   milestone.
+6. Chia task theo mục Task breakdown, tạo task trên tracker theo [mẫu Task](../../.github/ISSUE_TEMPLATE/task.md), gán
+   milestone và đưa vào board.
 
 **Task breakdown**
 
@@ -177,7 +179,7 @@ Bước 1–4 làm trong buổi kickoff.
 4. Mở PR theo [mẫu PR](../../.github/PULL_REQUEST_TEMPLATE.md): link task, mục SPEC, mức rủi ro, kết quả eval nếu có.
    Cho AI review trước.
 5. Một người khác review. PR rủi ro cao cần code owner của mảng đó duyệt.
-6. Squash merge. Staging tự deploy; chuyển task sang `Done`.
+6. Squash merge. Staging tự deploy; task tự chuyển sang `Done` nhờ `Closes #123` trong PR.
 
 **Milestone close**
 

@@ -30,7 +30,7 @@ eval/plan.md           Phase 3: metric, dataset, ngưỡng, lịch chạy eval
 1. Tạo repo bằng **Use this template**.
 2. Đọc [playbook](docs/playbook/README.md): nguyên tắc, sáu phase và bảng Project types để biết dự án cần tài liệu
    nào.
-3. Phase 0: điền [team.md](docs/team.md), bật branch protection cho `main`.
+3. Phase 0: điền [team.md](docs/team.md), bật branch protection cho `main`, tạo board GitHub Projects cho task.
 4. Đi theo [phases.md](docs/playbook/phases.md). Mỗi phase ghi output, owner và exit criteria.
 5. Xóa mẫu không dùng, ví dụ `ui-flow.md` và `architecture/frontend.md` khi sản phẩm không có giao diện.
 6. Khi biến README này thành README của sản phẩm, giữ link tới playbook và [AGENTS.md](AGENTS.md).
