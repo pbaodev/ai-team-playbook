@@ -5,6 +5,9 @@ Các default nhẹ về thủ tục nhưng chặt về bằng chứng: khi agent
 
 ## Tasks
 
+- **Tracker:** task, bug và CR nằm trên tracker ghi ở `team.md`, và chỉ nằm ở đó; không chép danh sách task sang file
+  trong repo. Default là GitHub Issues, gom theo milestone, trạng thái theo một board GitHub Projects với các cột
+  `Todo`, `In progress`, `In review`, `Done`.
 - Tự gán task và chuyển sang `In progress` khi bắt đầu. Hạn của task là hạn của milestone.
 - Mỗi task vừa một PR, đủ nhỏ để review trong khoảng 30 phút.
 - Nhánh sống tối đa 1–2 ngày và được cập nhật từ `main` mỗi ngày.
@@ -20,7 +23,7 @@ phụ thuộc đã merge.
   `feature`, `fix`, `docs`, `test`, `refactor`, `chore`.
 - **Commit và tiêu đề PR:** theo [Conventional Commits](https://www.conventionalcommits.org/). Phần `type(scope)` viết
   tiếng Anh, mô tả viết tiếng Việt, ví dụ `fix(api): trả 400 thay vì 500 khi tin nhắn rỗng`.
-- **Liên kết:** PR ghi mã task để tracker tự liên kết hai bên.
+- **Liên kết:** PR ghi `Closes #123` để task tự đóng và chuyển sang `Done` khi merge.
 
 ## Review
 
@@ -63,4 +66,7 @@ phụ thuộc đã merge.
 ## Variations
 
 - Nhóm 1–2 người: bỏ yêu cầu người duyệt thứ hai, giữ AI review và CI; ghi trong `team.md` rằng chưa có review độc lập.
-- Dùng GitLab hoặc Jira: giữ các quy tắc, đổi tên tương ứng (merge request thay cho PR, mã Jira trong tên nhánh).
+- Dùng GitLab: giữ các quy tắc, gọi merge request thay cho PR.
+- Dùng Jira: task, bug và CR tạo trên Jira với các trường như mẫu trong `.github/ISSUE_TEMPLATE/`. Tên nhánh và tiêu
+  đề PR ghi mã Jira (`PROJ-123`) để app Jira for GitHub tự liên kết. Agent cần Atlassian MCP hoặc Jira CLI để đọc task;
+  nếu không có, người giao việc dán nội dung task vào prompt.

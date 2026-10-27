@@ -36,7 +36,9 @@
 | Purpose | Choice |
 |---|---|
 | Code and review | [GitHub / GitLab] |
-| Tracker | [GitHub Issues / Jira / …] |
+| Tracker | [GitHub Issues + GitHub Projects / Jira] |
+| Board | [link tới board] |
+| Agent access to tracker | [`gh` CLI / GitHub MCP / Atlassian MCP] |
 | Chat | [tên công cụ] |
 | AI agent | [Claude Code / Codex / Cursor / …] |
 | Secrets | [password manager] |
