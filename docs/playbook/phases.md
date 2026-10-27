@@ -99,7 +99,9 @@ Bước 1–4 làm trong buổi kickoff.
 6. Chốt shared contract: DB schema, API, event, agent state, tool contract.
 7. Chọn phương pháp eval theo [eval.md](eval.md): chỉ số, cách chấm, loại dataset, cách chia tập. Dự án train thêm
    hướng dẫn gán nhãn.
-8. Cấu hình `make setup`, `make check` và CI theo stack; dựng staging và pipeline deploy.
+8. Cấu hình `make setup`, `make check` và CI theo stack. Thêm job CI mới vào required status checks của branch
+   protection, và bỏ check của job đã xóa; nếu không, PR sẽ chờ một check không bao giờ chạy. Dựng staging và
+   pipeline deploy.
 9. Ghi vào [conventions](../conventions/README.md) những quy tắc mà linter và formatter không tự kiểm được.
 
 **Guidelines**
