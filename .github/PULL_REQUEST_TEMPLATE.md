@@ -4,7 +4,7 @@
 
 ## Links
 
-- **Task:** [#issue]
+- **Task:** Closes [#issue]
 - **SPEC:** [mục liên quan]
 - **CR:** [CR-xxx nếu PR đổi hành vi đã chốt; bỏ nếu không]
 
